@@ -1,0 +1,19 @@
+sequenceDiagram
+title Exercise 0.5
+
+actor User
+participant Browser
+participant Server
+
+User->>Browser: Goes to the SPA 
+Browser->>Server: GET: https://studies.cs.helsinki.fi/exampleapp/spa
+Server-->>Browser: Respose: HTML document
+Browser->>Server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Server-->>Browser: Respose: main.css
+Browser->>Server: GET: https://studies.cs.helsinki.fi/exampleapp/spa.js
+Server-->>Browser: Response: spa.js
+    note right of Browser: Browser executes js file and fetches the JSON from the server  
+Browser->>Server: GET: https://studies.cs.helsinki.fi/exampleapp/data.json
+Server-->>Browser: Response: data.json
+    note right of Browser: Browser execute the function that renders the notes
+Browser->>User: Redender the SPA

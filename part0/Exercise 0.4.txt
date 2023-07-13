@@ -1,0 +1,22 @@
+sequenceDiagram
+title Exercise 0.4
+
+actor User
+participant Browser
+participant Server
+
+User->>Browser: Click submit button
+Browser->>Server: POST: https://studies.cs.helsinki.fi/exampleapp/new_note
+    note right of Browser: Send input value to server
+    note left of Server: Add input value to Notes
+Server-->>Browser: Send Response to Browser
+    note right of Browser: 302 status response
+Browser->>Server: GET: https://studies.cs.helsinki.fi/exampleapp/main.css
+Server-->>Browser: Response: main.css
+Browser->>Server: GET: https://studies.cs.helsinki.fi/exampleapp/main.js
+Server-->>Browser: Response: main.js
+    note right of Browser: Browser executes js file and fetches de JSON from the server
+Browser->>Server: GET: https://studies.cs.helsinki.fi/exampleapp/data.json
+Server-->>Browser: Response: data.json
+    note right of Browser: Browser executes the function that renders the notes
+Browser-->>User: Render Page

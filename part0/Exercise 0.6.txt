@@ -1,0 +1,15 @@
+sequenceDiagram
+title Exercise 0.6
+
+actor User
+participant Browser
+participant Server
+
+User->>Browser: Click submit button
+    note right of Browser: redrawNotes() function creates a new element in the list and adds it to local List
+Browser->>User: Render the list
+Browser->>Server: POST: https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    note right of Browser: Send input value to server
+    note left of Server: Add input value to Notes
+Server-->>Browser: Respose: Message: note created
+    note left of Server: Estatus 201 Created
